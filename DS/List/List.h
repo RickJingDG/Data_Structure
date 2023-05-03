@@ -4,126 +4,126 @@
 * Copyright (c) 2023,RickJingDG
 * All rights reserved.
 *
-* æ–‡ä»¶åç§°ï¼šList.h
-* æ–‡ä»¶æ ‡è¯†ï¼šæœªå®šä¹‰
-* æ‘˜ è¦ï¼šSTLæ ‡å‡†æ¨¡æ¿ç±»ä¸­çš„Listçš„ä¸ªäººç¼–å†™ç‰ˆ
+* ÎÄ¼şÃû³Æ£ºList.h
+* ÎÄ¼ş±êÊ¶£ºÎ´¶¨Òå
+* Õª Òª£ºSTL±ê×¼Ä£°åÀàÖĞµÄListµÄ¸öÈË±àĞ´°æ
 *
-* å½“å‰ç‰ˆæœ¬ï¼š1.0
-* ä½œ è€…ï¼šRickJingDG
-* ç‰ˆæœ¬æ¦‚è¦ï¼šæœ¬ç‰ˆæœ¬æ˜¯åŸºäºæ¸…åå¤§å­¦é‚“ä¿Šè¾‰æ•™æˆçš„æ•°æ®ç»“æ„ï¼ˆC++è¯­è¨€ç‰ˆï¼‰æ¥ç¼–å†™çš„ã€‚
-* å®Œæˆæ—¥æœŸï¼š2023å¹´4æœˆ17æ—¥
+* µ±Ç°°æ±¾£º1.0
+* ×÷ Õß£ºRickJingDG
+* °æ±¾¸ÅÒª£º±¾°æ±¾ÊÇ»ùÓÚÇå»ª´óÑ§µË¿¡»Ô½ÌÊÚµÄÊı¾İ½á¹¹£¨C++ÓïÑÔ°æ£©À´±àĞ´µÄ¡£
+* Íê³ÉÈÕÆÚ£º2023Äê4ÔÂ18ÈÕ
 *
 */
 
-//#include<iostream> //åº“æ–‡ä»¶å¼•ç”¨å’Œæ–‡ä»¶ä¿¡æ¯éš”å¼€ä¸€è¡Œ
-// å¼•ç”¨æ ‡å‡†åº“çš„å¤´æ–‡ä»¶
+//#include<iostream> //¿âÎÄ¼şÒıÓÃºÍÎÄ¼şĞÅÏ¢¸ô¿ªÒ»ĞĞ
+// ÒıÓÃ±ê×¼¿âµÄÍ·ÎÄ¼ş
 
 
-//#include "myheader.h"// å¼•ç”¨éæ ‡å‡†åº“çš„å¤´æ–‡ä»¶
+//#include "myheader.h"// ÒıÓÃ·Ç±ê×¼¿âµÄÍ·ÎÄ¼ş
 
 
-//=============å…¨å±€å˜é‡å®šä¹‰å¼€å§‹=======================
-typedef int Rank;//ç§©ï¼›RickJingè¯´æ˜ï¼štypedefå¸¸ç”¨äºç®€åŒ–å¤æ‚çš„å£°æ˜å’Œå®šä¹‰ï¼Œæˆ–è€…å•çº¯çš„æ”¹å˜åç§°å¢åŠ åŒºåˆ†åº¦ï¼Œå…¶æœ¬è´¨æ˜¯ç­‰æ•ˆæ›¿ä»£
-#define DEFAULT_CAPACITY 16//é»˜è®¤çš„åˆå§‹å®¹é‡ï¼ˆå®é™…åº”ç”¨ä¸­å¯è®¾ç½®ä¸ºæ›´å¤§ï¼‰
-//=============å…¨å±€å˜é‡å®šä¹‰ç»“æŸ=======================
+//=============È«¾Ö±äÁ¿¶¨Òå¿ªÊ¼=======================
+typedef int Rank;//ÖÈ£»RickJingËµÃ÷£ºtypedef³£ÓÃÓÚ¼ò»¯¸´ÔÓµÄÉùÃ÷ºÍ¶¨Òå£¬»òÕßµ¥´¿µÄ¸Ä±äÃû³ÆÔö¼ÓÇø·Ö¶È£¬Æä±¾ÖÊÊÇµÈĞ§Ìæ´ú
+#define DEFAULT_CAPACITY 16//Ä¬ÈÏµÄ³õÊ¼ÈİÁ¿£¨Êµ¼ÊÓ¦ÓÃÖĞ¿ÉÉèÖÃÎª¸ü´ó£©
+//=============È«¾Ö±äÁ¿¶¨Òå½áÊø=======================
 
-//=============ç»“æ„ä½“å®šä¹‰å¼€å§‹=======================
+//=============½á¹¹Ìå¶¨Òå¿ªÊ¼=======================
 /*
-* åŸºç¡€çš„ç»“æ„ä½“ï¼šæ— 
+* »ù´¡µÄ½á¹¹Ìå£ºÎŞ
 */
 //struct structType
 //{
 //	int intType;
 //	char charType;
 //};
-//=============ç»“æ„ä½“å®šä¹‰ç»“æŸ=======================
+//=============½á¹¹Ìå¶¨Òå½áÊø=======================
 
-//=============ç±»å®šä¹‰å¼€å§‹=======================
+//=============Àà¶¨Òå¿ªÊ¼=======================
 
 template <typename T> struct ListNode;
-template <typename T> using ListNodePosi = ListNode<T>*;//åˆ—è¡¨èŠ‚ç‚¹ä½ç½®
-template <typename T> struct ListNode {//åˆ—è¡¨èŠ‚ç‚¹æ¨¡æ¿ç±»ï¼ˆä»¥åŒå‘é“¾è¡¨å½¢å¼å®ç°ï¼‰
-    //æˆå‘˜
-    T data;//æ•°å€¼
-    ListNodePosi<T> pred, succ;//å‰é©±ã€åç»§
-    //æ„é€ å‡½æ•°
-    ListNode() {}//é’ˆå¯¹headerå’Œtrailerçš„æ„é€ 
+template <typename T> using ListNodePosi = ListNode<T>*;//ÁĞ±í½ÚµãÎ»ÖÃ
+template <typename T> struct ListNode {//ÁĞ±í½ÚµãÄ£°åÀà£¨ÒÔË«ÏòÁ´±íĞÎÊ½ÊµÏÖ£©
+    //³ÉÔ±
+    T data;//ÊıÖµ
+    ListNodePosi<T> pred, succ;//Ç°Çı¡¢ºó¼Ì
+    //¹¹Ôìº¯Êı
+    ListNode() {}//Õë¶ÔheaderºÍtrailerµÄ¹¹Ôì
     ListNode(T e, ListNodePosi<T> p = NULL, ListNodePosi<T> s = NULL)
-        : data(e), pred(p), succ(s) {}//é»˜è®¤æ„é€ å™¨
-    //æ“ä½œæ¥å£
-    ListNodePosi<T> insertAsPred(T const& e);//ç´§é å½“å‰èŠ‚ç‚¹ä¹‹å‰æ’å…¥æ–°èŠ‚ç‚¹
-    ListNodePosi<T> insertAsSucc(T const& e);//ç´§éšå½“å‰èŠ‚ç‚¹ä¹‹åæ’å…¥æ–°èŠ‚ç‚¹
+        : data(e), pred(p), succ(s) {}//Ä¬ÈÏ¹¹ÔìÆ÷
+    //²Ù×÷½Ó¿Ú
+    ListNodePosi<T> insertAsPred(T const& e);//½ô¿¿µ±Ç°½ÚµãÖ®Ç°²åÈëĞÂ½Úµã
+    ListNodePosi<T> insertAsSucc(T const& e);//½ôËæµ±Ç°½ÚµãÖ®ºó²åÈëĞÂ½Úµã
 };//ListNode
 
-template <typename T> class List//åˆ—è¡¨æ¨¡æ¿ç±»
+template <typename T> class List//ÁĞ±íÄ£°åÀà
 { 
 private:
-    Rank _size; ListNodePosi<T> header, trailer;//è§„æ¨¡ã€å¤´å“¨å…µã€å°¾å“¨å…µ
+    Rank _size; ListNodePosi<T> header, trailer;//¹æÄ£¡¢Í·ÉÚ±ø¡¢Î²ÉÚ±ø
 
 protected:
-    void init();//åˆ—è¡¨åˆ›å»ºæ—¶çš„åˆå§‹åŒ–
-    Rank clear();//æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
-    void copyNodes(ListNodePosi<T>, Rank);//å¤åˆ¶åˆ—è¡¨ä¸­è‡ªä½ç½®pèµ·çš„né¡¹
-    ListNodePosi<T> merge(ListNodePosi<T>, Rank, List<T>&, ListNodePosi<T>, Rank);//å½’å¹¶
-    void mergeSort(ListNodePosi<T>&, Rank);//å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹å½’å¹¶æ’åº
-    void selectionSort(ListNodePosi<T>, Rank);//å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹é€‰æ‹©æ’åº
-    void insertionSort(ListNodePosi<T>, Rank);//å¯¹ä»på¼€å§‹è¿ç»­çš„nä¸ªèŠ‚ç‚¹æ’å…¥æ’åº
+    void init();//ÁĞ±í´´½¨Ê±µÄ³õÊ¼»¯
+    Rank clear();//Çå³ıËùÓĞ½Úµã
+    void copyNodes(ListNodePosi<T>, Rank);//¸´ÖÆÁĞ±íÖĞ×ÔÎ»ÖÃpÆğµÄnÏî
+    ListNodePosi<T> merge(ListNodePosi<T>, Rank, List<T>&, ListNodePosi<T>, Rank);//¹é²¢
+    void mergeSort(ListNodePosi<T>&, Rank);//¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½Úµã¹é²¢ÅÅĞò
+    void selectionSort(ListNodePosi<T>, Rank);//¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½ÚµãÑ¡ÔñÅÅĞò
+    void insertionSort(ListNodePosi<T>, Rank);//¶Ô´Óp¿ªÊ¼Á¬ĞøµÄn¸ö½Úµã²åÈëÅÅĞò
 
 public:
-    //æ„é€ å‡½æ•°
-    List() { init(); }//é»˜è®¤
-    List(List<T> const& L);//æ•´ä½“å¤åˆ¶åˆ—è¡¨L
-    List(List<T> const& L, Rank r, Rank n);//å¤åˆ¶åˆ—è¡¨Lä¸­è‡ªç¬¬ré¡¹èµ·çš„né¡¹
-    List(ListNodePosi<T> p, Rank n);//å¤åˆ¶åˆ—è¡¨ä¸­è‡ªä½ç½®pèµ·çš„né¡¹
-    //ææ„å‡½æ•°
-    ~List();//é‡Šæ”¾ï¼ˆåŒ…å«å¤´ã€å°¾å“¨å…µåœ¨å†…çš„ï¼‰æ‰€æœ‰èŠ‚ç‚¹
-    //åªè¯»è®¿é—®æ¥å£
-    Rank size() const { return _size; }//è§„æ¨¡
-    bool empty() const { return _size <= 0; }//åˆ¤ç©º
-    ListNodePosi<T> operator[](Rank r) const;//é‡è½½ï¼Œæ”¯æŒå¾ªç§©è®¿é—®ï¼ˆæ•ˆç‡ä½ï¼‰
-    ListNodePosi<T> first() const { return header->succ; }//é¦–èŠ‚ç‚¹ä½ç½®
-    ListNodePosi<T> last() const { return trailer->pred; }//æœ«èŠ‚ç‚¹ä½ç½®
-    bool valid(ListNodePosi<T> p)//åˆ¤æ–­ä½ç½®pæ˜¯å¦å¯¹å¤–åˆæ³•
+    //¹¹Ôìº¯Êı
+    List() { init(); }//Ä¬ÈÏ
+    List(List<T> const& L);//ÕûÌå¸´ÖÆÁĞ±íL
+    List(List<T> const& L, Rank r, Rank n);//¸´ÖÆÁĞ±íLÖĞ×ÔµÚrÏîÆğµÄnÏî
+    List(ListNodePosi<T> p, Rank n);//¸´ÖÆÁĞ±íÖĞ×ÔÎ»ÖÃpÆğµÄnÏî
+    //Îö¹¹º¯Êı
+    ~List();//ÊÍ·Å£¨°üº¬Í·¡¢Î²ÉÚ±øÔÚÄÚµÄ£©ËùÓĞ½Úµã
+    //Ö»¶Á·ÃÎÊ½Ó¿Ú
+    Rank size() const { return _size; }//¹æÄ£
+    bool empty() const { return _size <= 0; }//ÅĞ¿Õ
+    ListNodePosi<T> operator[](Rank r) const;//ÖØÔØ£¬Ö§³ÖÑ­ÖÈ·ÃÎÊ£¨Ğ§ÂÊµÍ£©
+    ListNodePosi<T> first() const { return header->succ; }//Ê×½ÚµãÎ»ÖÃ
+    ListNodePosi<T> last() const { return trailer->pred; }//Ä©½ÚµãÎ»ÖÃ
+    bool valid(ListNodePosi<T> p)//ÅĞ¶ÏÎ»ÖÃpÊÇ·ñ¶ÔÍâºÏ·¨
     {
-        return p && (trailer != p) && (header != p);//å°†å¤´ã€å°¾èŠ‚ç‚¹ç­‰åŒäºNULL
+        return p && (trailer != p) && (header != p);//½«Í·¡¢Î²½ÚµãµÈÍ¬ÓÚNULL
     } 
-    Rank disordered() const;//åˆ¤æ–­åˆ—è¡¨æ˜¯å¦å·²æ’åº
-    ListNodePosi<T> find(T const& e) const//æ— åºåˆ—è¡¨æŸ¥æ‰¾
+    Rank disordered() const;//ÅĞ¶ÏÁĞ±íÊÇ·ñÒÑÅÅĞò
+    ListNodePosi<T> find(T const& e) const//ÎŞĞòÁĞ±í²éÕÒ
     {
         return find(e, _size, trailer);
     }
-    ListNodePosi<T> find(T const& e, Rank n, ListNodePosi<T> p) const;//æ— åºåŒºé—´æŸ¥æ‰¾
-    ListNodePosi<T> search(T const& e) const//æœ‰åºåˆ—è¡¨æŸ¥æ‰¾
+    ListNodePosi<T> find(T const& e, Rank n, ListNodePosi<T> p) const;//ÎŞĞòÇø¼ä²éÕÒ
+    ListNodePosi<T> search(T const& e) const//ÓĞĞòÁĞ±í²éÕÒ
     {
         return search(e, _size, trailer);
     }
-    ListNodePosi<T> search(T const& e, Rank n, ListNodePosi<T> p) const;//æœ‰åºåŒºé—´æŸ¥æ‰¾
-    ListNodePosi<T> selectMax(ListNodePosi<T> p, Rank n);//åœ¨påŠå…¶n-1ä¸ªåç»§ä¸­é€‰å‡ºæœ€å¤§è€…
-    ListNodePosi<T> selectMax() { return selectMax(header->succ, _size); }//æ•´ä½“æœ€å¤§è€…
-    // å¯å†™è®¿é—®æ¥å£
-    ListNodePosi<T> insertAsFirst(T const& e);//å°†eå½“ä½œé¦–èŠ‚ç‚¹æ’å…¥
-    ListNodePosi<T> insertAsLast(T const& e);//å°†eå½“ä½œæœ«èŠ‚ç‚¹æ’å…¥
-    ListNodePosi<T> insert(ListNodePosi<T> p, T const& e);//å°†eå½“ä½œpçš„åç»§æ’å…¥
-    ListNodePosi<T> insert(T const& e, ListNodePosi<T> p);//å°†eå½“ä½œpçš„å‰é©±æ’å…¥
-    T remove(ListNodePosi<T> p);//åˆ é™¤åˆæ³•ä½ç½®på¤„çš„èŠ‚ç‚¹,è¿”å›è¢«åˆ é™¤èŠ‚ç‚¹
-    void merge(List<T>& L) { merge(header->succ, _size, L, L.header->succ, L._size); }//å…¨åˆ—è¡¨å½’å¹¶
-    void sort(ListNodePosi<T>, Rank);//åˆ—è¡¨åŒºé—´æ’åº
-    void sort() { sort(first(), _size); }//åˆ—è¡¨æ•´ä½“æ’åº
-    Rank deduplicate();//æ— åºå»é‡
-    Rank uniquify();//æœ‰åºå»é‡
-    void reverse();//å‰åå€’ç½®ï¼ˆä¹ é¢˜ï¼‰
-    //éå†
-    void traverse(void (*visit)(T&));//éå†ï¼Œä¾æ¬¡å®æ–½visitæ“ä½œï¼ˆå‡½æ•°æŒ‡é’ˆï¼Œåªè¯»æˆ–å±€éƒ¨æ€§ä¿®æ”¹ï¼‰
-    template <typename VST>//æ“ä½œå™¨
-    void traverse(VST&);//éå†ï¼Œä¾æ¬¡å®æ–½visitæ“ä½œï¼ˆå‡½æ•°å¯¹è±¡ï¼Œå¯å…¨å±€æ€§ä¿®æ”¹ï¼‰
+    ListNodePosi<T> search(T const& e, Rank n, ListNodePosi<T> p) const;//ÓĞĞòÇø¼ä²éÕÒ
+    ListNodePosi<T> selectMax(ListNodePosi<T> p, Rank n);//ÔÚp¼°Æän-1¸öºó¼ÌÖĞÑ¡³ö×î´óÕß
+    ListNodePosi<T> selectMax() { return selectMax(header->succ, _size); }//ÕûÌå×î´óÕß
+    // ¿ÉĞ´·ÃÎÊ½Ó¿Ú
+    ListNodePosi<T> insertAsFirst(T const& e);//½«eµ±×÷Ê×½Úµã²åÈë
+    ListNodePosi<T> insertAsLast(T const& e);//½«eµ±×÷Ä©½Úµã²åÈë
+    ListNodePosi<T> insert(ListNodePosi<T> p, T const& e);//½«eµ±×÷pµÄºó¼Ì²åÈë
+    ListNodePosi<T> insert(T const& e, ListNodePosi<T> p);//½«eµ±×÷pµÄÇ°Çı²åÈë
+    T remove(ListNodePosi<T> p);//É¾³ıºÏ·¨Î»ÖÃp´¦µÄ½Úµã,·µ»Ø±»É¾³ı½Úµã
+    void merge(List<T>& L) { merge(header->succ, _size, L, L.header->succ, L._size); }//È«ÁĞ±í¹é²¢
+    void sort(ListNodePosi<T>, Rank);//ÁĞ±íÇø¼äÅÅĞò
+    void sort() { sort(first(), _size); }//ÁĞ±íÕûÌåÅÅĞò
+    Rank deduplicate();//ÎŞĞòÈ¥ÖØ
+    Rank uniquify();//ÓĞĞòÈ¥ÖØ
+    void reverse();//Ç°ºóµ¹ÖÃ£¨Ï°Ìâ£©
+    //±éÀú
+    void traverse(void (*visit)(T&));//±éÀú£¬ÒÀ´ÎÊµÊ©visit²Ù×÷£¨º¯ÊıÖ¸Õë£¬Ö»¶Á»ò¾Ö²¿ĞÔĞŞ¸Ä£©
+    template <typename VST>//²Ù×÷Æ÷
+    void traverse(VST&);//±éÀú£¬ÒÀ´ÎÊµÊ©visit²Ù×÷£¨º¯Êı¶ÔÏó£¬¿ÉÈ«¾ÖĞÔĞŞ¸Ä£©
 }; //List
 
-#include "List_fun.h"//å‡½æ•°å®ç°
+#include "List_fun.h"//º¯ÊıÊµÏÖ
 
-//=============ç±»å®šä¹‰ç»“æŸ=======================
+//=============Àà¶¨Òå½áÊø=======================
 
-//=============å‡½æ•°å£°æ˜å¼€å§‹=======================
-//void Function1(); // å…¨å±€å‡½æ•°å£°æ˜ï¼šæ— 
+//=============º¯ÊıÉùÃ÷¿ªÊ¼=======================
+//void Function1(); // È«¾Öº¯ÊıÉùÃ÷£ºÎŞ
 
-//=============å‡½æ•°å£°æ˜ç»“æŸ=======================
+//=============º¯ÊıÉùÃ÷½áÊø=======================
 
