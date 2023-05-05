@@ -1,7 +1,7 @@
 #define DSA_STACK_VECTOR //使用基于向量的栈
 #include<cstdio>//引用c模式精确控制输入输出流
 #include<iostream>//引用标准输入输出流
-#include"HuffmanTree.h"//引用栈
+#include"HuffmanTree.h"//引用霍夫曼树
 
 using namespace std;
 int* statistics(char* text)//统计字符出现频率 
