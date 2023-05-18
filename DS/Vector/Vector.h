@@ -8,7 +8,12 @@
 * 文件标识：未定义
 * 摘 要：STL标准模板类中的Vector的个人编写版
 *
-* 当前版本：1.0
+* 当前版本：1.1
+* 作 者：RickJingDG
+* 版本概要：本版本补充了完善了一些排序的内容。
+* 完成日期：2023年5月18日
+*
+* 取代版本：1.0
 * 作 者：RickJingDG
 * 版本概要：本版本是基于清华大学邓俊辉教授的数据结构（C++语言版）来编写的，其中有些许声明过的函数仅仅只有简单的定义，不具有具体运行的可行性。
 * 完成日期：2023年3月25日
@@ -55,7 +60,9 @@ protected:
 	void mergeSort(Rank lo, Rank hi);//归并排序算法
 	Rank partition(Rank lo, Rank hi);//轴点构造算法
 	void quickSort(Rank lo, Rank hi);//快速排序算法
-	void heapSort(Rank lo, Rank hi);//堆排序
+	void heapSort(Rank lo, Rank hi);//堆排序算法
+	void shellSort(Rank lo, Rank hi); //希尔排序算法
+	void insertionSort(Rank lo, Rank hi);//插入排序算法（很慢）
 	void swap(T& a, T& b);//交换
 public:
 	//构造函数
@@ -126,12 +133,54 @@ public:
 	template <typename VST> void traverse(VST&);//遍历（使用函数对象，可全局性修改）
 };//Vector
 
-#include "Vextor_fun.h"//函数实现
-
 //=============类定义结束=======================
 
 //=============函数声明开始=======================
-//void Function1(); // 全局函数声明：无
+
+template <typename T>
+inline void swap(T& a, T& b)
+{
+	T c = a;
+	a = b;
+	b = c;
+}
+
+//堆相关函数
+template <typename T> static bool lt(T* a, T* b) { return lt(*a, *b); } // less than
+template <typename T> static bool lt(T& a, T& b) { return a < b; } // less than
+#define  Parent(i)         ( ( ( i ) - 1 ) >> 1 ) //PQ[i]的父节点（floor((i-1)/2)，i无论正负）
+#define  LChild(i)         ( 1 + ( ( i ) << 1 ) ) //PQ[i]的左孩子
+#define  RChild(i)         ( ( 1 + ( i ) ) << 1 ) //PQ[i]的右孩子
+#define  InHeap(n, i)      ( ( ( -1 ) != ( i ) ) && ( ( i ) < ( n ) ) ) //判断PQ[i]是否合法
+#define  LChildValid(n, i) InHeap( n, LChild( i ) ) //判断PQ[i]是否有一个（左）孩子
+#define  RChildValid(n, i) InHeap( n, RChild( i ) ) //判断PQ[i]是否有两个孩子
+#define  Bigger(PQ, i, j)  ( lt( PQ[i], PQ[j] ) ? j : i ) //取大者（等时前者优先）
+#define  ProperParent(PQ, n, i) /*父子（至多）三者中的大者*/ \
+            ( RChildValid(n, i) ? Bigger( PQ, Bigger( PQ, i, LChild(i) ), RChild(i) ) : \
+            ( LChildValid(n, i) ? Bigger( PQ, i, LChild(i) ) : i \
+            ) \
+            ) //相等时父节点优先，如此可避免不必要的交换
+
+
+//对向量前n个词条中的第i个实施下滤，i < n
+template <typename T> Rank percolateDown(T* A, Rank n, Rank i)
+{
+	Rank j; // i及其（至多两个）孩子中，堪为父者
+	while (i != (j = ProperParent(A, n, i))) //只要i非j，则
+	{
+		swap(A[i], A[j]), i = j; //二者换位，并继续考查下降后的i
+	}
+	return i; //返回下滤抵达的位置（亦i亦j）
+}
+
+template <typename T> void heapify(T* A, const Rank n) //Floyd建堆算法，O(n)时间
+{
+	for (Rank i = n / 2 - 1; -1 != i; i--) //自底而上，依次
+	{
+		percolateDown(A, n, i); //经下滤合并子堆
+	}
+}
 
 //=============函数声明结束=======================
 
+#include "Vextor_fun.h"//函数实现

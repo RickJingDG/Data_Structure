@@ -82,13 +82,15 @@ void Vector<T>::bubbleSort(Rank lo, Rank hi)
 template<typename T>
 Rank Vector<T>::max(Rank lo, Rank hi)//在[lo, hi]内找出最大者
 {
-	Rank max = lo;
-	while (++lo < hi)
-		if (_elem[lo] >= _elem[max])//取等保证在最大值相同情况下总是取最后一个
+	Rank mx = hi;
+	while (lo < hi--) //逆向扫描
+	{
+		if (_elem[hi] > _elem[mx]) //且严格比较
 		{
-			max = lo;
+			mx = hi; //故能在max有多个时保证后者优先，进而保证selectionSort稳定
 		}
-	return max;//返回最大值的秩
+	}
+	return mx;
 }
 
 template<typename T>
@@ -128,7 +130,7 @@ void Vector<T>::mergeSort(Rank lo, Rank hi)
 	merge(lo, mi, hi); //归并
 }
 
-template<typename T>//RickJing说明：此算法用于找快排的轴点，与快排配合使用，但具体原理是干嘛，本人并不清楚，代码是从网上找的。
+template<typename T>//此算法用于找快排的轴点，与快排配合使用。
 Rank Vector<T>::partition(Rank lo, Rank hi)// DUP版：可优化处理多个关键码雷同的退化情况
 {
 	swap(_elem[lo], _elem[lo + rand() % (hi - lo)]); //任选一个元素与首元素交换
@@ -160,7 +162,7 @@ void Vector<T>::quickSort(Rank lo, Rank hi) // 0 <= lo < hi <= size
 	quickSort(lo, mi); quickSort(mi + 1, hi); //前缀、后缀各自递归排序
 }
 
-template<typename T>//RickJing说明：此算法用于堆排序，但具体原理本人并不清楚，代码是从网上找的，并且不全面，仅用于填充门面。
+template<typename T>//堆排序。
 void Vector<T>::heapSort(Rank lo, Rank hi)// 0 <= lo < hi <= size
 {
 	T* A = _elem + lo; 
@@ -170,6 +172,66 @@ void Vector<T>::heapSort(Rank lo, Rank hi)// 0 <= lo < hi <= size
 	{
 		swap(A[0], A[n]); percolateDown(A, n, 0);
 	} //堆顶与末元素对换，再下滤
+}
+
+template <typename T> //向量希尔排序
+void Vector<T>::shellSort(Rank lo, Rank hi) // 0 <= lo < hi <= size <= 2^31
+{ 
+	for (Rank d = 0x7FFFFFFF; 0 < d; d >>= 1) // PS Sequence: { 1, 3, 7, 15, 31, ... }
+	{
+		for (Rank j = lo + d; j < hi; j++) // for each j in [lo+d, hi)
+		{
+			T x = _elem[j]; Rank i = j; // within the prefix of the subsequence of [j]
+			while ((lo + d <= i) && (x < _elem[i - d])) // find the appropriate
+			{
+				_elem[i] = _elem[i - d], i -= d; // predecessor [i]
+			}
+			_elem[i] = x; // where to insert [j]
+		}
+	}
+}
+
+template <typename T> //对向量的插入排序
+void Vector<T>::insertionSort(Rank lo, Rank hi)//0 <= lo < hi <= size
+{
+	Rank n = hi - lo;
+	for (Rank r = 1; r < n; r++) //逐一为各元素
+	{
+		bool mark = false;
+		for (Rank hi1 = lo + r - 1; hi1 >= lo; hi1--)
+		{
+			if (_elem[hi1] > _elem[hi1 + 1])
+			{
+				T temp = _elem[hi1 + 1];
+				_elem[hi1 + 1] = _elem[hi1];
+				for (Rank j = 1; hi1 - j >= lo; j++)
+				{
+					if (temp < _elem[hi1 - j])
+					{
+						_elem[hi1 - j + 1] = _elem[hi1 - j];
+					}
+					else
+					{
+						_elem[hi1 - j + 1] = temp;
+						mark = true;
+						break;
+					}
+				}
+				if (mark == true)
+				{
+					break;
+				}
+				else
+				{
+					_elem[lo] = temp;
+				}
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
 }
 
 template<typename T>
@@ -265,7 +327,10 @@ inline void Vector<T>::sort(Rank lo, Rank hi, int Case)
 	case 1: bubbleSort(lo, hi); break; //起泡排序
 	case 2: selectionSort(lo, hi); break; //选择排序
 	case 3: mergeSort(lo, hi); break; //归并排序
-	default: quickSort(lo, hi); break; //快速排序
+	case 4: heapSort(lo, hi); break; //堆排序
+	case 5: quickSort(lo, hi); break; //快速排序
+	case 6: insertionSort(lo, hi); break; //插入排序
+	default: shellSort(lo, hi); break; //希尔排序
 	} //自主选择排序算法以测试
 }
 

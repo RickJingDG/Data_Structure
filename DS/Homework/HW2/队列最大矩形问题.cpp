@@ -1,4 +1,4 @@
-#define DSA_STACK_VECTOR //使用基于向量的栈
+//#define DSA_STACK_VECTOR //使用基于向量的栈
 #include<cstdio>//引用c模式精确控制输入输出流
 #include<iostream>//引用标准输入输出流
 #include"../../Stack/Stack.h"//引用栈
